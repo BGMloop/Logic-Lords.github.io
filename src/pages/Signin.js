@@ -84,25 +84,35 @@ function Signin() {
               </div>
 
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
+                <button className="font-medium text-indigo-600 hover:text-indigo-500">
                   Forgot your password?
-                </a>
+                </button>
               </div>
             </div>
 
             <div>
               <Link to="/">
-                <button
+                <a
                   type="submit"
-                  className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  Link
+                  to="/"
+                  className="group relative flex w-full mx-auto justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3"></span>
                   Sign in
-                </button>
+                </a>
               </Link>
+            </div>
+            <div className="flex justify-center">
+              <div className="text-sm font-medium text-gray-900">
+                Don't have an account?{" "}
+                <a
+                  className="text-indigo-600 hover:text-indigo-500"
+                  href="http://localhost:3000/signup"
+                >
+                  Sign Up
+                </a>
+              </div>
             </div>
           </form>
         </div>
