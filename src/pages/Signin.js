@@ -29,7 +29,7 @@ function Signin() {
       <div className="flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
-            <h2 className="sm:text-2xl lg:text-6xl font-medium title-font mb-4 text-gray-900">
+            <h2 className="text-6xl font-medium title-font mb-4 text-gray-900">
               Sign in
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600"></p>
@@ -84,9 +84,11 @@ function Signin() {
               </div>
 
               <div className="text-sm">
-                <button className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Forgot your password?
-                </button>
+                <Link to="/signup">
+                  <a className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Forgot your password?
+                  </a>
+                </Link>
               </div>
             </div>
 
@@ -94,8 +96,6 @@ function Signin() {
               <Link to="/">
                 <a
                   type="submit"
-                  Link
-                  to="/"
                   className="group relative flex w-full mx-auto justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   <span className="absolute inset-y-0 left-0 flex items-center pl-3"></span>
@@ -106,12 +106,11 @@ function Signin() {
             <div className="flex justify-center">
               <div className="text-sm font-medium text-gray-900">
                 Don't have an account?{" "}
-                <a
-                  className="text-indigo-600 hover:text-indigo-500"
-                  href="http://localhost:3000/signup"
-                >
-                  Sign Up
-                </a>
+                <Link to="/signup">
+                  <a className="text-indigo-600 hover:text-indigo-500">
+                    Sign Up
+                  </a>
+                </Link>
               </div>
             </div>
           </form>
