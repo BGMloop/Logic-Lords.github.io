@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Contact() {
   return (
-    <div className="sm:text-2xl text-8xl text-center text-bold">
+    <div className="sm:text-2xl lg:text-8xl text-center text-bold">
       <div className="flex flex-row justify-center bg-slate-400">
         <Link to="/">
           <button className="text-white hover:text-black font-bold py-2 px-6">
