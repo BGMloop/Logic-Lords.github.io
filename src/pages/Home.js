@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="text-8xl text-center text-bold">
+    <div className="sm:text-2xl text-8xl text-center text-bold">
       <div className="flex flex-row justify-center bg-slate-400">
         <Link to="/">
           <button className="text-black font-bold py-2 px-6">Home</button>
@@ -25,7 +25,7 @@ function Home() {
         </Link>
       </div>
       <div>
-        <h1 className="text-4xl mx-[150px] my-[75px]">This is the home page</h1>
+        <h1 className="sm:text-2xl text-4xl mx-[150px] my-[75px]">This is the home page</h1>
       </div>
     </div>
   );
