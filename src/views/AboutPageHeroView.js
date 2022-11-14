@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function About() {
+export default function Hero() {
   return (
     <div className="sm:text-2xl lg:text-8xl text-center text-bold">
       <div className="flex flex-row justify-center bg-slate-400">
@@ -49,5 +49,3 @@ function About() {
     </div>
   );
 }
-
-export default About;

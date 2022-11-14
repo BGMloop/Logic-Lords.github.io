@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Signup() {
+export default function Hero() {
   return (
     <div className="flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-2xl space-y-8">
@@ -64,5 +64,3 @@ function Signup() {
     </div>
   );
 }
-
-export default Signup;
