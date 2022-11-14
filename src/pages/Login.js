@@ -1,12 +1,12 @@
 import React from "react";
-import AboutPageHeroView from "../views/AboutPageHeroView";
+import LoginPageHeroView from "../views/LoginPageHeroView";
 import NavBar from "../components/NavBar";
 
-export default function AboutPage() {
+export default function LoginPage() {
   return (
     <div>
       <NavBar />
-      <AboutPageHeroView />
+      <LoginPageHeroView />
     </div>
   );
 }
