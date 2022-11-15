@@ -14,7 +14,7 @@ const mapStyle = {
 
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBH8ta2TGhOHqSDcCR_RFZFnov0_6JViy0",
+    googleMapsApiKey: "Insert API Key Here",
   });
 
   const [map, setMap] = useState(null);
