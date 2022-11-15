@@ -14,7 +14,7 @@ const mapStyle = {
 
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "ENTER YOUR API KEY HERE",
+    googleMapsApiKey: "AIzaSyBH8ta2TGhOHqSDcCR_RFZFnov0_6JViy0",
   });
 
   const [map, setMap] = useState(null);
@@ -44,7 +44,7 @@ export default function Map() {
       </GoogleMap>
       <div className="lg:w-1/2 md:w-2/3 mt-4">
         <div className="flex flex-col md:flex-row mb-8 items-center text-center">
-          <div className="p-1 w-1/2">
+          <div className="p-1 w-3/4">
             <div className="relative">
               <label for="name" className="text-4xl text-center text-gray-600">
                 Location 1
@@ -58,7 +58,7 @@ export default function Map() {
               />
             </div>
           </div>
-          <div className="p-1 w-1/2">
+          <div className="p-1 w-3/4">
             <div className="relative">
               <label for="email" className="text-4xl text-gray-600">
                 Location 2
