@@ -6,12 +6,14 @@ export default function NavBar() {
 
   return (
     <nav className="w-full bg-indigo-600 shadow">
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="/">
               <a href="javascript:void(0)">
-                <h2 className="text-2xl font-bold text-white">LOGO</h2>
+                <h2 className="text-2xl font-bold text-white">
+                  MEET ME HALFWAY
+                </h2>
               </a>
             </Link>
             <div className="md:hidden">
