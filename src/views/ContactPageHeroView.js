@@ -64,7 +64,10 @@ export default function Hero() {
                     </div>
                   </div>
                   <div className="p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg">
+                    <button
+                      onClick={() => alert("Thank you for your message!")}
+                      className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg"
+                    >
                       Submit
                     </button>
                   </div>
