@@ -1,6 +1,7 @@
 import React from "react";
 import { useCallback, useState, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import API_KEY from "../API_KEY.json";
 
 const center = {
   lat: 33.25398070865379,
@@ -14,7 +15,7 @@ const mapStyle = {
 
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "Insert API Key Here",
+    googleMapsApiKey: API_KEY.MAPS_API,
   });
 
   const [map, setMap] = useState(null);
