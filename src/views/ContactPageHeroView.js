@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Email from "../components/Email";
 
 export default function Hero() {
   return (
+    
     <div className="sm:text-2xl lg:text-8xl text-center text-bold">
       <div>
         <div>
@@ -64,7 +66,7 @@ export default function Hero() {
                     </div>
                   </div>
                   <div className="p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg">
+                    <button onClick={Email} className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg">
                       Submit
                     </button>
                   </div>
