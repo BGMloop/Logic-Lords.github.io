@@ -1,6 +1,6 @@
 import React from "react";
 import { useCallback, useState, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker, Autocomplete} from "@react-google-maps/api";
 import API_KEY from "../API_KEY.json";
 
 const center = {
@@ -16,6 +16,7 @@ const mapStyle = {
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: API_KEY.MAPS_API,
+    libraries: ['places']
   });
 
   const [map, setMap] = useState(null);
@@ -50,6 +51,7 @@ export default function Map() {
               <label for="name" className="text-4xl text-center text-gray-600">
                 Location 1
               </label>
+              <Autocomplete>
               <input
                 type="address"
                 id="address"
@@ -57,6 +59,7 @@ export default function Map() {
                 name="address"
                 className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              </Autocomplete>
             </div>
           </div>
           <div className="p-1 w-3/4">
@@ -64,6 +67,7 @@ export default function Map() {
               <label for="email" className="text-4xl text-gray-600">
                 Location 2
               </label>
+              <Autocomplete>
               <input
                 type="address"
                 id="address"
@@ -71,6 +75,7 @@ export default function Map() {
                 name="address"
                 className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
+              </Autocomplete>
             </div>
           </div>
         </div>
