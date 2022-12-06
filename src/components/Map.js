@@ -11,8 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const center = {
-  lat: 33.25398070865379,
-  lng: -97.15243503175917,
+  lat: 33.2539807,
+  lng: -97.152435,
 };
 
 const mapStyle = {
@@ -27,8 +27,8 @@ export default function Map() {
   });
 
   const [map, setMap] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [lat, setLat] = useState(33.25398);
+  const [lng, setLng] = useState(-97.1524);
   const [status, setStatus] = useState(null);
 
   const getLocation = () => {
@@ -68,7 +68,7 @@ export default function Map() {
       <GoogleMap
         mapContainerStyle={mapStyle}
         center={updatedCenter}
-        zoom={17}
+        zoom={15}
         onLoad={(map) => setMap(map)}
         onUnmount={onUnmount}
       >
