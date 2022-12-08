@@ -35,6 +35,7 @@ export default function Map() {
   const [location1, setLocation1] = useState(null);
   const [location2, setLocation2] = useState(null);
 
+  // Get users current location
   const getLocation = () => {
     if (!navigator.geolocation) {
       setStatus("Geolocation is not supported by your browser");
@@ -45,6 +46,15 @@ export default function Map() {
           setStatus(null);
           setLat(position.coords.latitude);
           setLng(position.coords.longitude);
+          // set the location1 to the current location and pan the map to the location
+          setLocation1({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+          map.panTo({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
         },
         () => {
           setStatus("Unable to retrieve your location");
@@ -52,9 +62,6 @@ export default function Map() {
       );
     }
   };
-
-  const updatedCenter = { lat, lng };
-  console.log(location1);
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -67,6 +74,7 @@ export default function Map() {
     setMap(null);
   }, []);
 
+  // hancle the location1 input
   const location1Click = () => {
     setLocation1(testRef.current.value);
   };
@@ -79,6 +87,9 @@ export default function Map() {
         if (status === "OK") {
           console.log(results[0].geometry.location);
           setLocation1(results[0].geometry.location);
+
+          // set the center of the map to location1 and pan the map to the location
+          map.panTo(results[0].geometry.location);
         } else {
           alert(
             "Geocode was not successful for the following reason: " + status
@@ -88,13 +99,11 @@ export default function Map() {
     }
   }, [location1]);
 
-  // pan to location 1
-
   return isLoaded ? (
     <div className="flex flex-col items-center mt-12">
       <GoogleMap
         mapContainerStyle={mapStyle}
-        center={updatedCenter}
+        center={denton}
         zoom={15}
         onLoad={(map) => setMap(map)}
         onUnmount={onUnmount}
