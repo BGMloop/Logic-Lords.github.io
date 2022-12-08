@@ -1,18 +1,19 @@
 import React from "react";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
   Marker,
   Autocomplete,
+  LoadScriptNext,
 } from "@react-google-maps/api";
 import API_KEY from "../API_KEY.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-const center = {
-  lat: 33.2539807,
-  lng: -97.152435,
+const denton = {
+  lat: 33.21618224226912,
+  lng: -97.1332708813027,
 };
 
 const mapStyle = {
@@ -27,9 +28,12 @@ export default function Map() {
   });
 
   const [map, setMap] = useState(null);
-  const [lat, setLat] = useState(33.25398);
-  const [lng, setLng] = useState(-97.1524);
+  const [lat, setLat] = useState(denton.lat);
+  const [lng, setLng] = useState(denton.lng);
   const [status, setStatus] = useState(null);
+  const testRef = useRef(null);
+  const [location1, setLocation1] = useState(null);
+  const [location2, setLocation2] = useState(null);
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -49,8 +53,8 @@ export default function Map() {
     }
   };
 
-  console.log(lat, lng);
   const updatedCenter = { lat, lng };
+  console.log(location1);
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -63,6 +67,29 @@ export default function Map() {
     setMap(null);
   }, []);
 
+  const location1Click = () => {
+    setLocation1(testRef.current.value);
+  };
+
+  // convert address to lat and lng
+  useEffect(() => {
+    if (location1) {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: location1 }, (results, status) => {
+        if (status === "OK") {
+          console.log(results[0].geometry.location);
+          setLocation1(results[0].geometry.location);
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
+          );
+        }
+      });
+    }
+  }, [location1]);
+
+  // pan to location 1
+
   return isLoaded ? (
     <div className="flex flex-col items-center mt-12">
       <GoogleMap
@@ -73,7 +100,7 @@ export default function Map() {
         onUnmount={onUnmount}
       >
         {/* Child components, such as markers, info windows, etc. */}
-        <Marker position={updatedCenter} />
+        <Marker position={location1} />
       </GoogleMap>
       <div className="lg:w-1/2 md:w-2/3 mt-4">
         <div className="flex flex-col md:flex-row mb-8 items-center text-center">
@@ -87,6 +114,7 @@ export default function Map() {
               </label>
               <Autocomplete>
                 <input
+                  ref={testRef}
                   type="address"
                   id="address"
                   placeholder="address 1"
@@ -94,6 +122,7 @@ export default function Map() {
                   className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </Autocomplete>
+              <button onClick={location1Click}>Submit</button>
             </div>
           </div>
           <div className="p-1 w-3/4">
@@ -107,6 +136,7 @@ export default function Map() {
                   id="address"
                   placeholder="address 2"
                   name="address"
+                  value={location2}
                   className="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </Autocomplete>
