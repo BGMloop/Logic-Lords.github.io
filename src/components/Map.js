@@ -5,8 +5,6 @@ import {
   useJsApiLoader,
   Marker,
   Autocomplete,
-  LoadScriptNext,
-  Polyline,
 } from "@react-google-maps/api";
 import API_KEY from "../API_KEY.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,8 +27,6 @@ export default function Map() {
   });
 
   const [map, setMap] = useState(null);
-  const [lat, setLat] = useState(denton.lat);
-  const [lng, setLng] = useState(denton.lng);
   const [status, setStatus] = useState(null);
   const locationRef1 = useRef(null);
   const locationRef2 = useRef(null);
@@ -51,9 +47,6 @@ export default function Map() {
       setStatus("Locating...");
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setStatus(null);
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
           // set the location1 to the current location and pan the map to the location
           setLocation1({
             lat: position.coords.latitude,
@@ -63,6 +56,7 @@ export default function Map() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+          map.setZoom(14);
         },
         () => {
           setStatus("Unable to retrieve your location");
@@ -163,7 +157,7 @@ export default function Map() {
       <GoogleMap
         mapContainerStyle={mapStyle}
         center={denton}
-        zoom={15}
+        zoom={5}
         onLoad={(map) => setMap(map)}
         onUnmount={onUnmount}
       >
@@ -181,6 +175,11 @@ export default function Map() {
               <Autocomplete>
                 <input
                   ref={locationRef1}
+                  fields={[
+                    "address_components",
+                    "formatted_address",
+                    "geometry",
+                  ]}
                   type="address"
                   id="address"
                   placeholder="address 1"
@@ -198,6 +197,11 @@ export default function Map() {
               <Autocomplete>
                 <input
                   ref={locationRef2}
+                  fields={[
+                    "address_components",
+                    "formatted_address",
+                    "geometry",
+                  ]}
                   type="address"
                   id="address"
                   placeholder="address 2"
@@ -209,7 +213,7 @@ export default function Map() {
           </div>
         </div>
         <button
-          className="flex mx-auto mt-[-20px] bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-12 rounded-full"
+          className="flex mx-auto mt-[-20px] mb-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-12 rounded-full"
           onClick={locationClick}
         >
           Submit
