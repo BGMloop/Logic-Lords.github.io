@@ -149,7 +149,7 @@ export default function Map() {
   return isLoaded ? (
     <div className="flex flex-col items-center mt-4">
       <button
-        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full mb-4"
         onClick={getLocation}
       >
         Get Device location
