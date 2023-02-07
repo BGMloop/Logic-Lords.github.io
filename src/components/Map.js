@@ -122,7 +122,6 @@ export default function Map() {
         }
       );
 
-      /*
       const distanceService = new window.google.maps.DistanceMatrixService();
       distanceService.getDistanceMatrix(
         {
@@ -134,7 +133,7 @@ export default function Map() {
           if (status === window.google.maps.DistanceMatrixStatus.OK) {
             setDistance(result.rows[0].elements[0].distance.text);
             setDuration(result.rows[0].elements[0].duration.text);
-            // log the distance and duration to the console
+            // log the distance and duration from point a to point b to the console
             console.log(result.rows[0].elements[0].distance.text);
             console.log(result.rows[0].elements[0].duration.text);
           } else {
@@ -142,7 +141,6 @@ export default function Map() {
           }
         }
       );
-      */
     }
   }, [location1, location2, map]);
 
