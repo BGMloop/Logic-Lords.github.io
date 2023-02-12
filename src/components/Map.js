@@ -10,6 +10,7 @@ import API_KEY from "../API_KEY.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
+
 const denton = {
   lat: 33.21618224226912,
   lng: -97.1332708813027,
@@ -34,6 +35,7 @@ export default function Map() {
   const [location2, setLocation2] = useState(null);
   const [distance, setDistance] = useState(null);
   const [duration, setDuration] = useState(null);
+  const [midpoint, setMidpoint] = useState(null);
 
   // Get users current location
   const getLocation = () => {
@@ -102,6 +104,24 @@ export default function Map() {
           map.setZoom(15);
         });
 
+      // calculate the midpoint using the Haversine formula
+      const R = 6371; // Earth's radius in kilometers
+      const dLat = toRad(location2.lat - location1.lat);
+      const dLon = toRad(location2.lng - location1.lng);
+      const lat1 = toRad(location1.lat);
+      const lat2 = toRad(location2.lat);
+      const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.sin(dLon / 2) *
+          Math.sin(dLon / 2) *
+          Math.cos(lat1) *
+          Math.cos(lat2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const distance = R * c;
+      const midpointLat = (location1.lat + location2.lat) / 2;
+      const midpointLng = (location1.lng + location2.lng) / 2;
+      setMidpoint({ lat: midpointLat, lng: midpointLng });
+
       // create a directions renderer
       const directionsRenderer = new window.google.maps.DirectionsRenderer();
       // get directions from location 1 to location 2
@@ -136,6 +156,14 @@ export default function Map() {
             // log the distance and duration from point a to point b to the console
             console.log(result.rows[0].elements[0].distance.text);
             console.log(result.rows[0].elements[0].duration.text);
+            // log the midpoint to the console
+            console.log(midpoint);
+            // put a marker on the midpoint
+            new window.google.maps.Marker({
+              position: midpoint,
+              map,
+              title: "Midpoint",
+            });
           } else {
             console.error(`error fetching distance ${result}`);
           }
@@ -143,6 +171,10 @@ export default function Map() {
       );
     }
   }, [location1, location2, map]);
+
+  function toRad(Value) {
+    return (Value * Math.PI) / 180;
+  }
 
   return isLoaded ? (
     <div className="flex flex-col items-center mt-4">
