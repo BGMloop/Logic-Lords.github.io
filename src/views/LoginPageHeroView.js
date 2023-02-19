@@ -4,28 +4,6 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <div className="sm:text-2xl lg:text-8xl text-center text-bold">
-      <div className="flex flex-row justify-center bg-slate-400">
-        <Link to="/">
-          <button className="text-white hover:text-black font-bold py-2 px-6">
-            Home
-          </button>
-        </Link>
-        <Link to="/about">
-          <button className="text-white hover:text-black font-bold py-2 px-6 rounded">
-            About
-          </button>
-        </Link>
-        <Link to="/contact">
-          <button className=" text-white hover:text-black font-bold py-2 px-6 rounded">
-            Contact
-          </button>
-        </Link>
-        <Link to="/signin">
-          <button className="text-black font-bold py-2 px-6 rounded">
-            Login
-          </button>
-        </Link>
-      </div>
       <div className="flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

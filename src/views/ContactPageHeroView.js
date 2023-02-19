@@ -4,28 +4,6 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <div className="sm:text-2xl lg:text-8xl text-center text-bold">
-      <div className="flex flex-row justify-center bg-slate-400">
-        <Link to="/">
-          <button className="text-white hover:text-black font-bold py-2 px-6">
-            Home
-          </button>
-        </Link>
-        <Link to="/about">
-          <button className="text-white hover:text-black font-bold py-2 px-6 rounded">
-            About
-          </button>
-        </Link>
-        <Link to="/contact">
-          <button className=" text-black font-bold py-2 px-6 rounded">
-            Contact
-          </button>
-        </Link>
-        <Link to="/signin">
-          <button className="text-white hover:text-black font-bold py-2 px-6 rounded">
-            Login
-          </button>
-        </Link>
-      </div>
       <div>
         <div>
           <section className="text-gray-700 body-font relative">
@@ -86,7 +64,11 @@ export default function Hero() {
                     </div>
                   </div>
                   <div className="p-2 w-full">
-                    <button className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg">
+                    <button
+                      onClick={() => 
+                      window.open('mailto:meetmehalfway@gmail.com?subject=subject&body=body')}
+                      className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg"
+                    >
                       Submit
                     </button>
                   </div>
