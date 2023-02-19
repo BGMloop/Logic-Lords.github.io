@@ -65,7 +65,8 @@ export default function Hero() {
                   </div>
                   <div className="p-2 w-full">
                     <button
-                      onClick={() => alert("Thank you for your message! Please allow 3-5 days for a response")}
+                      onClick={() => 
+                      window.open('mailto:meetmehalfway@gmail.com?subject=subject&body=body')}
                       className="flex mx-auto text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-700 rounded text-lg"
                     >
                       Submit
