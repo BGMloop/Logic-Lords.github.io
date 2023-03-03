@@ -243,6 +243,12 @@ export default function Map() {
             </div>
           </div>
         </div>
+        <button
+          className="flex mx-auto mt-2 mb-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-12 rounded-full"
+          onClick={locationClick}
+        >
+          Submit
+        </button>
       </div>
       <GoogleMap
         mapContainerStyle={mapStyle}
@@ -255,12 +261,6 @@ export default function Map() {
         <Marker position={location1} />
         <Marker position={location2} />
       </GoogleMap>
-      <button
-        className="flex mx-auto mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-12 rounded-full"
-        onClick={locationClick}
-      >
-        Submit
-      </button>
     </div>
   ) : (
     <></>
