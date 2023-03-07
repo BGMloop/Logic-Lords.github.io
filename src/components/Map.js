@@ -71,9 +71,14 @@ export default function Map() {
   }, []);
 
   // handle location 1 and 2 submit button click
+  // if the route is a valid route continue else alert the user
   const locationClick = () => {
-    setLocation1(locationRef1.current.value);
-    setLocation2(locationRef2.current.value);
+    if (locationRef1.current.value && locationRef2.current.value) {
+      setLocation1(locationRef1.current.value);
+      setLocation2(locationRef2.current.value);
+    } else {
+      alert("Please enter a valid route");
+    }
   };
 
   // convert and pin location 1 and 2 on the map
