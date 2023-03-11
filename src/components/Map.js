@@ -186,7 +186,10 @@ export default function Map() {
         <div className="flex flex-col md:flex-row items-center text-center mb-4">
           <div className="p-1 w-3/4">
             <div className="relative">
-              <label for="name" className="text-4xl text-center text-gray-600">
+              <label
+                for="name"
+                className="text-2xl md:text-4xl text-center text-gray-600"
+              >
                 Location 1
               </label>
               <Autocomplete>
@@ -207,7 +210,7 @@ export default function Map() {
             </div>
           </div>
           <button
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-full mb-12"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-2 rounded-full mt-2 md:mb-12"
             onClick={getLocation}
           >
             <svg
@@ -227,7 +230,10 @@ export default function Map() {
           </button>
           <div className="p-1 w-3/4">
             <div className="relative">
-              <label for="email" className="text-4xl text-gray-600">
+              <label
+                for="email"
+                className="text-2xl md:text-4xl text-center text-gray-600"
+              >
                 Location 2
               </label>
               <Autocomplete>
