@@ -1,7 +1,23 @@
 import React from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
 
-export default function Hero() {
+export default function LoginPageHeroView() {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post('/api/auth/signin', {
+        email,
+        password,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="sm:text-2xl lg:text-8xl text-center text-bold">
       <div className="flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
