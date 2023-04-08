@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 
-const uri = 'mongodb+srv://LogicLords:LogicLords123@cluster0.cri5x.mongodb.net/documents?retryWrites=true&w=majority'
+const uri = 'mongodb+srv://LogicLords:LogicLords123@cluster0.cri5x.mongodb.net/user?retryWrites=true&w=majority'
 
 async function connect() {
     try {
